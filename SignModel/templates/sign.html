@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title> 欢迎来到棒棒堂 </title>
+</head>
+<body>
+<b> 预约试听 (报名) </b><br>
+棒棒堂咨询电话: 025-10086<br>
+<form action="/signfinish/" method="post">
+    {% csrf_token %}
+    <br><b>学生姓名 <font color="#FF0000">*</font></b><br>
+    <input type="text" name="name" placeholder="小明" required><br>
+    <br><b>年级</b><br>
+    <select name="grade_list">
+        <option value="0">请选择</option>
+        <option value="7">幼儿园中班</option>
+        <option value="8">幼儿园大班</option>
+        <option value="1">一年级</option>
+        <option value="2">二年级</option>
+        <option value="3">三年级</option>
+        <option value="4">四年级</option>
+        <option value="5">五年级</option>
+        <option value="6">六年级</option>
+    </select><br>
+    <br><b>试听课程</b><br>
+    {% for course in course_list %}
+        <input type="checkbox" name="courses" value="{{ course }}">{{ course }}<br>
+    {% endfor %}
+    <br><b>电话号码 <font color="#FF0000">*</font></b><br>
+    <input type="tel" name="phone_num" required/><br>
+
+    <br><b>电子邮件</b><br>
+    <input type="email" name="email"><br>
+    <br><input type="submit" value="提交">
+</form>
+<p> 测试HTML5视频功能 </p>
+<video width="320" height="320" controls>
+  <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+您的浏览器不支持Video标签。
+</video>
+</body>
+</html>
