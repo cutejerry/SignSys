@@ -17,9 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from SignModel import views as SignModel_views
+from HttpDownloads import views as HttpDownloads_views
 
 urlpatterns = [
     url(r'^$', SignModel_views.sign),
+    url(r'^sign/', SignModel_views.sign),
     url(r'^signfinish/', SignModel_views.signfinish),
+    url(r'^doc/', HttpDownloads_views.download),
     url(r'^admin/', admin.site.urls),
 ]

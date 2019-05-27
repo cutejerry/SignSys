@@ -17,15 +17,16 @@ def signfinish(request):
         courses = request.POST.getlist("courses")
         phone_num = request.POST.get("phone_num")
         email = request.POST.get("email")
-        (object, created) = Record.objects.get_or_create(name=name, grade=grade, phone_num=phone_num, email=email)
-        if created == True:
-            print(name, grade, courses, phone_num)
-            for c in courses:
-                obj = Course.objects.get(name=c)
-                object.course_list.add(obj)
-            object.save()
-        else:
-            print("The record is created.")
+        (object, created) = Record.objects.get_or_create(phone_num=phone_num)
+        if created != True:
+            print("The record is created. We update it now.")
+        object.name=name
+        object.grade=grade
+        object.email=email
+        for c in courses:
+            obj = Course.objects.get(name=c)
+            object.course_list.add(obj)
+        object.save()
         return render(request, 'signfinish.html')
     else:
         return render(request, 'signfinish.html') #for weichat flow
