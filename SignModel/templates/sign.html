@@ -27,15 +27,15 @@
     {% for course in course_list %}
         <input type="checkbox" name="courses" value="{{ course }}">{{ course }}<br>
     {% endfor %}
-    <br><b>电话号码 <font color="#FF0000">*</font></b><br>
-    <input type="tel" name="phone_num" required/><br>
+    <br><b>手机号码 <font color="#FF0000">*</font></b><br>
+    <input type="tel" name="phone_num" pattern="^\d{11}$" required/><br>
 
     <br><b>电子邮件</b><br>
     <input type="email" name="email"><br>
     <br><input type="submit" value="提交">
 </form>
-<p> 测试HTML5视频功能 </p>
-<video width="320" height="320" controls>
+<br><p><b>学校简介</b></p>
+<video width="320" height="180" controls>
   <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
 您的浏览器不支持Video标签。
 </video>
