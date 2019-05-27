@@ -3,6 +3,7 @@ from SignModel.models import Course
 from SignModel.models import Record
 
 import csv
+import codecs
 from django.http import HttpResponse
 
 class CourseAdmin(admin.ModelAdmin):
@@ -20,6 +21,7 @@ class RecordAdmin(admin.ModelAdmin):
 
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment;filename={}.csv'.format(opts.verbose_name.encode('utf-8'))
+        response.write(codecs.BOM_UTF8)
         writer = csv.writer(response)
         writer.writerow(field_names)
 
@@ -31,15 +33,13 @@ class RecordAdmin(admin.ModelAdmin):
                     for s in getattr(obj, "course_list").all():
                         info = info + s.name + ','
                     info = info[:-1]
-                # if(type(info).__name__ == 'str'):
-                #     info = info.encode('gb2312')
                 else:
                     info = getattr(obj, field)
                 row.append(info)
             writer.writerow(row)
 
         return response
-    export_as_csv.short_description = "µº≥ˆµΩExcel"
+    export_as_csv.short_description = "ÂØºÂá∫Êàêcsv"
 
 # Register your models here.
 admin.site.register(Course, CourseAdmin)
