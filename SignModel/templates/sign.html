@@ -1,43 +1,181 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-    <title> 欢迎来到棒棒堂 </title>
-</head>
-<body>
-<b> 预约试听 (报名) </b><br>
-棒棒堂咨询电话: 025-10086<br>
-<form action="/signfinish/" method="post">
-    {% csrf_token %}
-    <br><b>学生姓名 <font color="#FF0000">*</font></b><br>
-    <input type="text" name="name" placeholder="小明" required><br>
-    <br><b>年级</b><br>
-    <select name="grade_list">
-        <option value="未选择">请选择</option>
-        <option value="幼儿园中班">幼儿园中班</option>
-        <option value="幼儿园大班">幼儿园大班</option>
-        <option value="一年级">一年级</option>
-        <option value="二年级">二年级</option>
-        <option value="三年级">三年级</option>
-        <option value="四年级">四年级</option>
-        <option value="五年级">五年级</option>
-        <option value="六年级">六年级</option>
-    </select><br>
-    <br><b>试听课程</b><br>
-    {% for course in course_list %}
-        <input type="checkbox" name="courses" value="{{ course }}">{{ course }}<br>
-    {% endfor %}
-    <br><b>手机号码 <font color="#FF0000">*</font></b><br>
-    <input type="tel" name="phone_num" pattern="^\d{11}$" required/><br>
+<title>欢迎来到棒棒堂</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+{% load static %}
+<style type="text/css">
+<!--
+    #md {
+        width :1000px;
+        text-align : left;
+        margin:0 0 0 0;
+        padding: 0 0 0 0;
+    }
 
-    <br><b>电子邮件</b><br>
-    <input type="email" name="email"><br>
-    <br><input type="submit" value="提交">
-</form>
-<br><p><b>学校简介</b></p>
-<video width="320" height="180" controls>
-  <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
-您的浏览器不支持Video标签。
-</video>
+    #Default-01 {
+	    left:0px;
+	    top:0px;
+	    width:1000px;
+	    height:559px;
+	    background-image:url({% static "SignModel/Default_01.gif" %})
+    }
+
+    #Default-03 {
+	    width:1000px;
+	    height:767px;
+	    display:inline-block;
+		margin:0 0 0 0;
+        padding:0 0 0 0;
+        vertical-align:top;
+        text-align :center;
+	    background-image:url({% static "SignModel/md.jpg" %})
+    }
+
+    #Default-05 {
+	    left:0px;
+	    top:1326px;
+	    width:1000px;
+	    height:187px;
+	    background-image:url({% static "SignModel/Default_05.jpg" %})
+    }
+    
+    #intro {
+	    width:1000px;
+	    height:187px;
+	    padding-top:0px;
+	    margin-top:0px;
+    }
+    
+    .style1 {
+        width: 100%;
+    }
+
+    .style3 {
+        width: 23px;
+        text-align: right;
+        height:50px;
+    }
+
+    .style4 {
+        width: 406px;
+        height: 50px;
+    }
+
+    .style5
+    {
+        width: 243px;
+        text-align: right;
+        height: 50px;
+        font-family: Arial, Helvetica, sans-serif, 微软雅黑;
+        font-size: 28px;
+        font-weight: 300;
+        font-style: normal;
+        color: #229199;
+    }
+            
+    .input {
+        border-style: dashed; font-size: 26px; color: #3399FF;
+    }
+
+    .body {
+        background-color:#2ec3cf; margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;
+    }
+
+-->
+</style>
+
+</head>
+<body class="body">
+<div align = "center">
+	<div id="Default-01"></div>
+    <div id ="md"><div id="Default-03">	    
+    <div id="application-02">
+
+        <form action="/signfinish/" method="post">
+
+            <br /> {% csrf_token %}
+            <table class="style1">
+                <tr>
+                    <td class="style5">学生姓名</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td>
+                        <input class="input" type="text" name="name" placeholder="小明" required><b><font color="#FF0000"> *</font></b></td>
+                </tr>
+                <tr>
+                    <td class="style5">年级</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td>
+                        <select name="grade_list" class="input">
+                        <option value="未选择">请选择</option>
+                        <option value="幼儿园中班">幼儿园中班</option>
+                        <option value="幼儿园大班">幼儿园大班</option>
+                        <option value="一年级">一年级</option>
+                        <option value="二年级">二年级</option>
+                        <option value="三年级">三年级</option>
+                        <option value="四年级">四年级</option>
+                        <option value="五年级">五年级</option>
+                        <option value="六年级">六年级</option>
+                        </select>
+                   </td>
+                </tr>
+                <tr>
+                    <td class="style5">试听课程</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td>
+                        {% for course in course_list %}
+                <input class="input" type="checkbox" name="courses" value="{{ course }}">{{ course }}<br>   
+                        {% endfor %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style5">手机号码</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td class="style4"> 
+                        <input class="input" type="tel" name="phone_num" pattern="^\d{11}$" required/><b> <font color="#FF0000">*</font></b></td>
+                </tr>
+                <tr>
+                    <td class="style5">电子邮件</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td class="style4">
+                       <input class="input" type="email" name="email"></td>
+                </tr>
+                <tr>
+                    <td class="style5">
+                        &nbsp;</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td class="style4">
+                       <input class="input" type="submit" value="提交"></td>
+                </tr>
+                </table>
+        </form>
+
+        <div id = "intro" >
+            <table class="style1">
+                <tr>
+                    <td class="style5">
+                       <br/<br/>学校简介</td>
+                    <td class="style3">
+                        &nbsp;</td>
+                    <td class="style4">
+                </tr>
+            </table>
+        <video width="500" height="300" controls>
+          <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
+
+        您的浏览器不支持Video标签。
+        </video>
+        </div>
+
+    </div>
+    </div>
+    </div>
+	<div id="Default-05"></div>
+</div>
 </body>
 </html>
