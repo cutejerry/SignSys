@@ -5,22 +5,22 @@
 {% load static %}
 <style type="text/css">
 <!--
-    #md {
-        width :1000px;
-        text-align : left;
-        margin:0 0 0 0;
-        padding: 0 0 0 0;
-    }
-
-    #Default-01 {
+    #banner {
 	    left:0px;
 	    top:0px;
 	    width:1000px;
 	    height:559px;
 	    background-image:url({% static "SignModel/Default_01.gif" %})
     }
+    
+    #certre {
+        width :1000px;
+        text-align : left;
+        margin:0 0 0 0;
+        padding: 0 0 0 0;
+    }
 
-    #Default-03 {
+    #content {
 	    width:1000px;
 	    height:767px;
 	    display:inline-block;
@@ -29,9 +29,13 @@
         vertical-align:top;
         text-align :center;
 	    background-image:url({% static "SignModel/md.jpg" %})
+}
+
+    #application-02 > form    {
+        margin-bottom:0px;
     }
 
-    #Default-05 {
+    #foot {
 	    left:0px;
 	    top:1326px;
 	    width:1000px;
@@ -46,22 +50,46 @@
 	    margin-top:0px;
     }
     
-    .style1 {
+    #cert {
+	    width:1000px;
+	    height:37px;
+	    margin:0; 
+	    padding:10px 0;
+        background-color: #A7FAFF
+    }
+    
+        #cert > a 
+        {
+            color:#939393;
+            display:inline-block;
+            text-decoration:none;
+            height:20px;
+            line-height:20px;
+            font-family: Arial, Helvetica, sans-serif, 微软雅黑;
+        }
+    
+        #cert > a > img
+        {
+            vertical-align:bottom;
+        }
+    
+    .tb {
         width: 100%;
+        margin-top: 0px;
     }
 
-    .style3 {
+    .td1 {
         width: 23px;
         text-align: right;
         height:50px;
     }
 
-    .style4 {
+    .td2 {
         width: 406px;
         height: 50px;
     }
 
-    .style5
+    .td3
     {
         width: 243px;
         text-align: right;
@@ -74,108 +102,90 @@
     }
             
     .input {
-        border-style: dashed; font-size: 26px; color: #3399FF;
+        border-style: dashed; 
+        font-size: 26px;
+        color: #3399FF;
     }
 
     .body {
-        background-color:#2ec3cf; margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;
+        background-color:#2ec3cf; 
+        margin-top: 0px; 
+        margin-bottom: 0px; 
+        margin-left: 0px; 
+        margin-right: 0px;
     }
 
 -->
 </style>
-
 </head>
-<body class="body">
-<div align = "center">
-	<div id="Default-01"></div>
-    <div id ="md"><div id="Default-03">	    
-    <div id="application-02">
 
-        <form action="/signfinish/" method="post">
-
-            <br /> {% csrf_token %}
-            <table class="style1">
-                <tr>
-                    <td class="style5">学生姓名</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td>
-                        <input class="input" type="text" name="name" placeholder="小明" required><b><font color="#FF0000"> *</font></b></td>
-                </tr>
-                <tr>
-                    <td class="style5">年级</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td>
-                        <select name="grade_list" class="input">
-                        <option value="未选择">请选择</option>
-                        <option value="幼儿园中班">幼儿园中班</option>
-                        <option value="幼儿园大班">幼儿园大班</option>
-                        <option value="一年级">一年级</option>
-                        <option value="二年级">二年级</option>
-                        <option value="三年级">三年级</option>
-                        <option value="四年级">四年级</option>
-                        <option value="五年级">五年级</option>
-                        <option value="六年级">六年级</option>
-                        </select>
-                   </td>
-                </tr>
-                <tr>
-                    <td class="style5">试听课程</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td>
-                        {% for course in course_list %}
-                <input class="input" type="checkbox" name="courses" value="{{ course }}">{{ course }}<br>   
-                        {% endfor %}
-                    </td>
-                </tr>
-                <tr>
-                    <td class="style5">手机号码</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td class="style4"> 
-                        <input class="input" type="tel" name="phone_num" pattern="^\d{11}$" required/><b> <font color="#FF0000">*</font></b></td>
-                </tr>
-                <tr>
-                    <td class="style5">电子邮件</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td class="style4">
-                       <input class="input" type="email" name="email"></td>
-                </tr>
-                <tr>
-                    <td class="style5">
-                        &nbsp;</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td class="style4">
-                       <input class="input" type="submit" value="提交"></td>
-                </tr>
-                </table>
-        </form>
-
-        <div id = "intro" >
-            <table class="style1">
-                <tr>
-                    <td class="style5">
-                       <br/<br/>学校简介</td>
-                    <td class="style3">
-                        &nbsp;</td>
-                    <td class="style4">
-                </tr>
-            </table>
-        <video width="500" height="300" controls>
-          <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4">
-
-        您的浏览器不支持Video标签。
-        </video>
+<body class = "body">
+    <div align = "center">
+	    <div id = "banner">
         </div>
+        <div id ="certre">
+            <div id="content">	    
+                <div id="application-02">
+                    <form action="/signfinish/" method="post">
+                        <br /> {% csrf_token %}
+                        <table class="tb">
+                            <tr>
+                                <td class="td3">学生姓名</td>
+                                <td class="td1">&nbsp;</td>
+                    			<td><input class="input" type="text" name="name" placeholder="小明" required><b><font color="#FF0000"> *</font></b></td>
+                            </tr>
+                            <tr>
+                                <td class="td3">年级</td>
+                                <td class="td1">&nbsp;</td>
+                                <td>
+                                    <select name="grade_list" class="input">
+                                    <option value="未选择">请选择</option>
+                                    <option value="幼儿园中班">幼儿园中班</option>
+                                    <option value="幼儿园大班">幼儿园大班</option>
+                                    <option value="一年级">一年级</option>
+                                    <option value="二年级">二年级</option>
+                                    <option value="三年级">三年级</option>
+                                    <option value="四年级">四年级</option>
+                                    <option value="五年级">五年级</option>
+                                    <option value="六年级">六年级</option>
+                                    </select>
+                               </td>
+                            </tr>
+                            <tr>
+                                <td class="td3">试听课程</td>
+                                <td class="td1">&nbsp;</td>
+                                <td>
+                                    {% for course in course_list %}
+                                    <input class="input" type="checkbox" name="courses" value="{{ course }}">{{ course }}<br>   
+                                    {% endfor %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td3">手机号码</td>
+                                <td class="td1"></td>
+                                <td class="td2"><input class="input" type="tel" name="phone_num" pattern="^\d{11}$" required/><b> <font color="#FF0000">*</font></b></td>
+                            </tr>
+                            <tr>
+                                <td class="td3">电子邮件</td>
+                                <td class="td1">&nbsp;</td>
+                                <td class="td2"><input class="input" type="email" name="email"></td>
+                            </tr>
+                            <tr>
+                                <td class="td3">&nbsp;</td>
+                                <td class="td1">&nbsp;</td>
+                                <td class="td2"><input class="input" type="submit" value="提交"></td>
+                            </tr>
+                            </table>
+                    </form>
 
+
+                </div>
+            </div>
+        </div>
+	    <div id="foot"></div>
+        <div id="cert">
+            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011302320724" target = "_blank">苏ICP备19029192号-1<br/><img alt="苏公网安备 32011302320724号" src={% static "SignModel/cert.png" %} /> 苏公网安备 32011302320724号  </a> 
+        </div>
     </div>
-    </div>
-    </div>
-	<div id="Default-05"></div>
-</div>
 </body>
 </html>

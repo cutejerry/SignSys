@@ -4,17 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 {% load static %}
 <style type="text/css">
-    <!--
-    #md {
-        width :1000px;
-        text-align : left;
-        margin:0 0 0 0;
-        padding: 0 0 0 0;
-        height: 286px;
-        background: #ffffff;
-    }
-
-    #Default-01 {
+<!--
+    #banner {
 	    left:0px;
 	    top:0px;
 	    width:1000px;
@@ -22,19 +13,28 @@
 	    background-image:url({% static "SignModel/Default_01.gif" %})
     }
     
-    #Default-03
+    #certre {
+        width :1000px;
+        text-align : center;
+        margin:0 0 0 0;
+        padding: 0 0 0 0;
+        height: 286px;
+        background: #ffffff;
+    }
+    
+    #content
     {
         width: 1000px;
-        height: 88px;
+        height: 200px;
         font-family: Arial, Helvetica, sans-serif, 微软雅黑;
-        font-size: 40px;
+        font-size: 60px;
         font-weight: 300;
         font-style: normal;
         color: #229199;
         text-align: center;
     }
     
-    #Default-05 {
+    #foot {
 	    left:0px;
 	    width:1000px;
 	    height:187px;
@@ -42,24 +42,55 @@
         background-image:url({% static "SignModel/Default_05.jpg" %})
     }
 
+    #cert {
+	    width:1000px;
+	    height:37px;
+	    margin:0; 
+	    padding:10px 0;
+        background-color: #A7FAFF
+    }
+    
+        #cert > a 
+        {
+            color:#939393;
+            display:inline-block;
+            text-decoration:none;
+            height:20px;
+            line-height:20px;
+            font-family: Arial, Helvetica, sans-serif, 微软雅黑;
+        }
+    
+        #cert > a > img
+        {
+            vertical-align:bottom;
+        }
+
     .body {
-        background-color:#2ec3cf; margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px;
+        background-color:#2ec3cf; 
+        margin-top: 0px; 
+        margin-bottom: 0px; 
+        margin-left: 0px; 
+        margin-right: 0px;
     }
 
-    -->
+-->
 </style>
-
 </head>
-<body class="body">
-<div align = "center">
-	<div id="Default-01"></div>
-    <div id ="md"><div id="Default-03">	    
-        <br />
-        报名成功!
-        <br />
+
+<body class = "body">
+    <div align = "center">
+	    <div id = "banner"></div>
+        <div id = "certre">
+            <div id = "content">	    
+                <br />
+                报名成功!
+                <br />
+            </div>
+	        <div id = "foot"></div>
+            <div id = "cert">
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011302320724" target = "_blank">苏ICP备19029192号-1<br/> <img alt="苏公网安备 32011302320724号" src={% static "SignModel/cert.png" %} />苏公网安备 32011302320724号  </a> 
+            </div>
         </div>
-	<div id="Default-05"></div>
     </div>
-</div>
 </body>
 </html>
